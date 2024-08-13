@@ -27,6 +27,7 @@ import {
   ChatBubbleLeftRightIcon,
   PhoneIcon,
 } from "@heroicons/react/24/solid";
+import Cookies from "js-cookie";
 import { ZIM } from "zego-zim-web";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import Dashboard from "./HomePage";
@@ -73,7 +74,7 @@ const Profile = () => {
     setIsClicked(!isClicked);
   };
   const menuItems = ["Dashboard", "Exercise", "Analysis", "Suggestion"];
-  const [activeMenuItem, setActiveMenuItem] = useState(menuItems[0]);
+  const [activeMenuItem, setActiveMenuItem] = useState(menuItems[1]);
   const [open, setOpen] = useState(1); // Track the selected item
   const handleItemClick = (itemNumber) => {
     setOpen(itemNumber);
@@ -195,6 +196,11 @@ const Profile = () => {
       setInitialized(true);
     }
   }, [initialized]);
+
+  async function logout() {
+    console.log("Logout function triggered"); // Check if this logs
+    navigate("/login");
+}
 
   const handleVideoCallButtonClick = () => {
     
@@ -339,7 +345,7 @@ const Profile = () => {
               <ListItem
                 className={`${
                   screenWidth < 1535 ? "w-2/3 px-4" : " w-full p-3"
-                }`}
+                }`} onClick={logout}
               >
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
@@ -450,7 +456,7 @@ const Profile = () => {
               <ListItem
                 className={`${
                   screenWidth < 1535 ? "w-2/3 px-4" : " w-full p-3"
-                }`}
+                }`} onClick={logout}
               >
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
