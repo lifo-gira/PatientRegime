@@ -1903,6 +1903,11 @@ const Exercise = ({ onBack }) => {
     return pain;
   }
 
+  async function logout() {
+    console.log("Logout function triggered"); // Check if this logs
+    navigate("/login");
+}
+
   function handleExerciseSelection(chosenExercise, simple) {
     console.log(`${chosenExercise} is chosen.`);
     setuseExercise(chosenExercise);
@@ -2353,9 +2358,9 @@ const Exercise = ({ onBack }) => {
             >
               <div className={`flex justify-center items-center`}>
                 <button class="relative group rounded-full">
-                  <ArrowLeftIcon
+                  <PowerIcon
                     className={`w-7 h-7`}
-                    onClick={onBack}
+                    onClick={logout}
                     color="white"
                   />
                 </button>
